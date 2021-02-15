@@ -59,7 +59,7 @@ class PeripheralViewController: UIViewController, CBCentralManagerDelegate, BleP
      Peripheral connected.  Update UI
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("Connected Peripheral: \(peripheral.name)")
+        print("Connected Peripheral: \(peripheral.name ?? "")")
         
         advertisedNameLabel.text = blePeripheral.advertisedName
         identifierLabel.text = blePeripheral.peripheral.identifier.uuidString
@@ -79,7 +79,7 @@ class PeripheralViewController: UIViewController, CBCentralManagerDelegate, BleP
      Peripheral disconnected.  Leave UIView
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("Disconnected Peripheral: \(peripheral.name)")
+        print("Disconnected Peripheral: \(String(describing: peripheral.name))")
         dismiss(animated: true, completion: nil)
     }
     

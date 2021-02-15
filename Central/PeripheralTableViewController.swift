@@ -74,7 +74,7 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
      Scan for Bluetooth peripherals
      */
     func startBleScan() {
-        scanButton.setTitle("Stop", for: UIControlState.normal)
+        scanButton.setTitle("Stop", for: UIControl.State.normal)
         blePeripherals.removeAll()
         tableView.reloadData()
         print ("discovering devices")
@@ -96,14 +96,14 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
         }
         scanTimer.invalidate()
         scanCountdown = 0
-        scanButton.setTitle("Start", for: UIControlState.normal)
+        scanButton.setTitle("Start", for: UIControl.State.normal)
     }
     
     
     /**
      Update the scan countdown timer
      */
-    func updateScanCounter() {
+    @objc func updateScanCounter() {
         //you code, this is an example
         if scanCountdown > 0 {
             print("\(scanCountdown) seconds until Ble Scan ends")
@@ -128,7 +128,7 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
      */
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         //print("Discovered \(peripheral.name)")
-        print("Discovered \(peripheral.identifier.uuidString) (\(peripheral.name))")
+        print("Discovered \(peripheral.identifier.uuidString) (\(String(describing: peripheral.name)))")
         
         
         
